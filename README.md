@@ -1,2 +1,4 @@
 # blink
-this a simple csv to mysql bridge application
+Front end build automation
+
+Currently deciding on the weapon of choice gulp vs grunt.
