@@ -15,7 +15,7 @@ var minifyCSS = require('gulp-minify-css');
 // Gulp copy bootstrap, jquery
 gulp.task('vendors', function () {
     gulp.src('./bower_components/bootstrap/dist/css/bootstrap.css').pipe(gulp.dest('./assets/css/'));
-    gulp.src('./bower_components/bootstrap/dist/js/bootstrap.css').pipe(gulp.dest('./assets/css/'));
+    gulp.src('./bower_components/bootstrap/dist/js/bootstrap.js').pipe(gulp.dest('./assets/js/'));
     gulp.src('./bower_components/jquery/dist/jquery.js').pipe(gulp.dest('./assets/js/'));
 });
 
