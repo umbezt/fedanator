@@ -1,0 +1,28 @@
+{
+  "name": "Fedanator",
+  "version": "0.0.1",
+  "authors": [
+    "Oscar Mwanandimai <scarwizkid@gmail.com>"
+  ],
+  "description": "FED automation tool",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "bootstrap",
+    "jquery"
+  ],
+  "license": "MIT",
+  "homepage": "http://amekmani.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "jquery": "~2.1.3"
+  }
+}
