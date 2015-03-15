@@ -1,4 +1,7 @@
-# blink
+# Fedanator
 Front end build automation
 
-Currently deciding on the weapon of choice gulp vs grunt.
+## Tools Used
+> * Bower
+* Gulp
+* NPM
