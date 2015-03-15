@@ -1,10 +1,11 @@
 # Fedanator
 Front end build automation
 
-## Tools Used
+### Tools Used
 > * [Bower](#bower)
 * [Gulp](#gulp)
 * [NPM](#NPM)
+### [Installation](#Installation)
 
 ***
 ### Bower
@@ -16,3 +17,5 @@ I also use gulp to move the files I want from the `bower_components` folder into
 
 ### NPM
 I use npm to install all my plugins for gulp.
+
+### Installation
