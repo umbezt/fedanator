@@ -18,7 +18,7 @@ I also use gulp to move the files I want from the `bower_components` folder into
 I use npm to install all my plugins for gulp.
 
 ### Installation
-> Run the following in terminal / cmd
+> Run the following in terminal / cmd  
 1. `npm install`
 2. `bower install`
 3. `gulp`
