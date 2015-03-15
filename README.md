@@ -4,9 +4,8 @@ Front end build automation
 ### Tools Used
 > * [Bower](#bower)
 * [Gulp](#gulp)
-* [NPM](#NPM)  
-
-### [Installation](#Installation)
+* [NPM](#NPM)
+* [Installation](#Installation)
 
 ***
 ### Bower
