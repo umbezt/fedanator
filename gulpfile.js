@@ -21,14 +21,14 @@ gulp.task('vendors', function () {
 
 // JS hint task on dev js files
 gulp.task('jshint', function () {
-    gulp.src('./_src/js/*.js')
+    gulp.src('./build/js/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
 
 // minify new images
 gulp.task('imagemin', function () {
-    var imgSrc = './_src/img/**/*',
+    var imgSrc = './build/img/**/*',
         imgDst = './assets/img/';
 
     gulp.src(imgSrc)
@@ -39,7 +39,7 @@ gulp.task('imagemin', function () {
 
 // JS concat, strip debugging and minify
 gulp.task('scripts', function () {
-    gulp.src('./_src/js/*.js')
+    gulp.src('./build/js/*.js')
         .pipe(concat('app.js'))
         .pipe(stripDebug())
         .pipe(uglify())
@@ -48,14 +48,14 @@ gulp.task('scripts', function () {
 
 // run sass
 gulp.task('sass', function () {
-    gulp.src('./_src/sass/*.scss')
+    gulp.src('./build/sass/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('./assets/css/'));
 });
 
 // CSS concat, auto-prefix and minify
 gulp.task('styles', function () {
-    gulp.src(['./_src/css/*.css'])
+    gulp.src(['./build/css/*.css'])
         .pipe(concat('app.css'))
         .pipe(autoprefix('last 2 versions'))
         .pipe(minifyCSS())
@@ -66,16 +66,16 @@ gulp.task('styles', function () {
 gulp.task('default', ['vendors', 'imagemin', 'sass', 'scripts', 'styles'], function () {
 
     // watch for JS changes
-    gulp.watch('./_src/js/*.js', function () {
+    gulp.watch('./build/js/*.js', function () {
         gulp.run('jshint', 'scripts');
     });
 
-    gulp.watch('./_src/sass/*.scss', function(){
+    gulp.watch('./build/sass/*.scss', function(){
        gulp.run('sass');
     });
 
     // watch for CSS changes
-    gulp.watch('./_src/css/*.css', function () {
+    gulp.watch('./build/css/*.css', function () {
         gulp.run('styles');
     });
 });
