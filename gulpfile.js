@@ -22,60 +22,55 @@ gulp.task('vendors', function () {
 // JS hint task on dev js files
 gulp.task('jshint', function () {
     gulp.src('./build/js/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 });
 
 // minify new images
 gulp.task('imagemin', function () {
     var imgSrc = './build/img/**/*',
-        imgDst = './assets/img/';
+    imgDst = './assets/img/';
 
     gulp.src(imgSrc)
-        .pipe(changed(imgDst))
-        .pipe(imagemin())
-        .pipe(gulp.dest(imgDst));
+    .pipe(changed(imgDst))
+    .pipe(imagemin())
+    .pipe(gulp.dest(imgDst));
 });
 
 // JS concat, strip debugging and minify
 gulp.task('scripts', function () {
     gulp.src('./build/js/*.js')
-        .pipe(concat('app.js'))
-        .pipe(stripDebug())
-        .pipe(uglify())
-        .pipe(gulp.dest('./assets/js/'));
+    .pipe(concat('app.js'))
+    .pipe(stripDebug())
+    .pipe(uglify())
+    .pipe(gulp.dest('./assets/js/'));
 });
 
 // run sass
 gulp.task('sass', function () {
     gulp.src('./build/sass/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('./assets/css/'));
+    .pipe(sass())
+    .pipe(gulp.dest('./assets/css/'));
 });
 
 // CSS concat, auto-prefix and minify
 gulp.task('styles', function () {
     gulp.src(['./build/css/*.css'])
-        .pipe(concat('app.css'))
-        .pipe(autoprefix('last 2 versions'))
-        .pipe(minifyCSS())
-        .pipe(gulp.dest('./_build/css/'));
+    .pipe(concat('app.css'))
+    .pipe(autoprefix('last 2 versions'))
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('./_build/css/'));
 });
 
 // default gulp task
 gulp.task('default', ['vendors', 'imagemin', 'sass', 'scripts', 'styles'], function () {
 
     // watch for JS changes
-    gulp.watch('./build/js/*.js', function () {
-        gulp.run('jshint', 'scripts');
-    });
+    gulp.watch('./build/js/*.js', ['jshint', 'scripts']);
 
-    gulp.watch('./build/sass/*.scss', function(){
-       gulp.run('sass');
-    });
+    // watch for sass changes
+    gulp.watch('./build/sass/*.scss', ['sass']);
 
     // watch for CSS changes
-    gulp.watch('./build/css/*.css', function () {
-        gulp.run('styles');
-    });
+    gulp.watch('./build/css/*.css', ['styles']);
 });
