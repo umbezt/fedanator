@@ -73,4 +73,7 @@ gulp.task('default', ['vendors', 'imagemin', 'sass', 'scripts', 'styles'], funct
 
     // watch for CSS changes
     gulp.watch('./build/css/*.css', ['styles']);
+
+    // watch for image changes
+    gulp.watch('./build/img/**/*', ['imagemin']);
 });
