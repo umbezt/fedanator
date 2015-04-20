@@ -11,6 +11,7 @@ var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var autoprefix = require('gulp-autoprefixer');
 var minifyCSS = require('gulp-minify-css');
+var notify = require("gulp-notify");
 
 // Gulp copy bootstrap, jquery
 gulp.task('vendors', function () {
