@@ -4,7 +4,7 @@ var gulp = require('gulp');
 // include plug-ins
 var jshint = require('gulp-jshint');
 var changed = require('gulp-changed');
-var imagemin = require('gulp-imagemin');
+var images = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
@@ -15,7 +15,9 @@ var notify = require("gulp-notify");
 
 // Gulp copy bootstrap, jquery
 gulp.task('vendors', function () {
-    gulp.src('./bower_components/bootstrap/dist/css/bootstrap.css').pipe(gulp.dest('./assets/css/'));
+    gulp.src('./bower_components/bootstrap/dist/css/bootstrap.css')
+    .pipe(gulp.dest('./assets/css/'))
+    .pipe(notify(""));
     gulp.src('./bower_components/bootstrap/dist/js/bootstrap.js').pipe(gulp.dest('./assets/js/'));
     gulp.src('./bower_components/jquery/dist/jquery.js').pipe(gulp.dest('./assets/js/'));
 });
@@ -28,14 +30,15 @@ gulp.task('jshint', function () {
 });
 
 // minify new images
-gulp.task('imagemin', function () {
+gulp.task('images', function() {
     var imgSrc = './build/img/**/*',
-    imgDst = './assets/img/';
+        imgDst = './assets/img';
 
-    gulp.src(imgSrc)
-    .pipe(changed(imgDst))
-    .pipe(imagemin())
-    .pipe(gulp.dest(imgDst));
+    return gulp.src(imgSrc)
+        .pipe(changed(imgDst))
+        .pipe(imagemin())
+        .pipe(gulp.dest(imgDst))
+        .pipe(notify({ message: 'Images compressed and copied to the assets folder.', onLast: true }));
 });
 
 // JS concat, strip debugging and minify
@@ -64,7 +67,7 @@ gulp.task('styles', function () {
 });
 
 // default gulp task
-gulp.task('default', ['vendors', 'imagemin', 'sass', 'scripts', 'styles'], function () {
+gulp.task('default', ['vendors', 'images', 'sass', 'scripts', 'styles'], function () {
 
     // watch for JS changes
     gulp.watch('./build/js/*.js', ['jshint', 'scripts']);
@@ -76,5 +79,5 @@ gulp.task('default', ['vendors', 'imagemin', 'sass', 'scripts', 'styles'], funct
     gulp.watch('./build/css/*.css', ['styles']);
 
     // watch for image changes
-    gulp.watch('./build/img/**/*', ['imagemin']);
+    gulp.watch('./build/img/**/*', ['images']);
 });
