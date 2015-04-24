@@ -1,0 +1,20 @@
+// color variables
+
+// general rules
+
+body{
+
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+
+// modules
+@import "_typography";
+@import "_controls";
+@import "_header";
+@import "_pages";
+@import "_footer";
