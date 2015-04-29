@@ -72,7 +72,7 @@ gulp.task('styles', function () {
     return gulp.src(['./build/css/*.css'])
         .pipe(concat('app.css'))
         .pipe(minifyCSS())
-        .pipe(gulp.dest('./_build/css/'))
+        .pipe(gulp.dest('./build/css/'))
         .pipe(notify({message: 'Styles have been concatenated and minified.', onLast: true}));
 });
 
