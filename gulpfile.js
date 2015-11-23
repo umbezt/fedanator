@@ -1,7 +1,7 @@
 var elixir = require('laravel-elixir');
 
 config.publicPath = 'src';
-config.assetsPath = 'assets'
+config.assetsPath = 'assets';
 
 elixir(function(mix) {
   // watch the sass files and compile them
