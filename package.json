@@ -23,6 +23,6 @@
   "homepage": "https://github.com/oscarmwana/fedanator#readme",
   "dependencies": {
     "gulp": "^3.9.0",
-    "laravel-elixir": "^3.0.0"
+    "laravel-elixir": "^4.0.0"
   }
 }
